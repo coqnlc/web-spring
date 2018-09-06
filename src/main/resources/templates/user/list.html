@@ -20,7 +20,7 @@
 			<td>${u.password}</td>
 			<td>${u.age}</td>
 			<td>${u.describe}</td>
-			<td>${u.datetime}</td>
+			<td>${u.getDateTimeStr()}</td>
 			<td>
 				<a href="/update?user=${u}">修改</a> 
 				<a href="/delete?id={$u.id}">删除</a>

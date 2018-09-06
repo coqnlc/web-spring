@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 
 import com.example.util.LCUtil;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -16,6 +15,7 @@ import lombok.NonNull;
  *
  */
 @Data
+@NoArgsConstructor
 public class User {
 	@NonNull
 	private Integer id;

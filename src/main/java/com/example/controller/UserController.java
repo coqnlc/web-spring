@@ -36,8 +36,8 @@ public class UserController {
 	
 	@RequestMapping("/list")
 	public String queryAll(ModelMap model) {
-		List<User> users = service.queryAll();
-		model.addAttribute("userList", users);
+		List<User> userList = service.queryAll();
+		model.addAttribute("userList", userList);
 		return "user/list";
 	}
 	

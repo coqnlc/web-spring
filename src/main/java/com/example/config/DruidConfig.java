@@ -23,25 +23,28 @@ import com.alibaba.druid.pool.DruidDataSource;
 @Configuration
 public class DruidConfig {
 	
-	@Autowired
-	private Environment env;
-	
-	@Bean
-	public JdbcTemplate jdbcTemplate() {
-		JdbcTemplate jdbc = new JdbcTemplate(druidDataSource());
-		return jdbc;
-	}
+	private final String CLASS_NAME = "com.mysql.cj.jdbc.Driver";
+	private final String URL = "jdbc:mysql://127.0.0.1:3306/web_demo?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+	private final String USERNAME = "root";
+	private final String PASSWORD = "lc1234";
 	
 	@Bean
 	public DruidDataSource druidDataSource() {
-		DruidDataSource source = new DruidDataSource();		
-		source.setUrl(env.getProperty("spring.dataSource.url"));
-		source.setUrl(env.getProperty("spring.dataSource.username"));
-		source.setUrl(env.getProperty("spring.dataSource.password"));
-		
+		//数据库配置
+		DruidDataSource source = new DruidDataSource();
+		source.setDriverClassName(CLASS_NAME);
+		source.setUrl(URL);
+		source.setUsername(USERNAME);
+		source.setPassword(PASSWORD);
+		//连接池配置
+		source.setInitialSize(20);
+		source.setMinIdle(10);
+		source.setMaxActive(30);
+		//过滤器配置
 		List<Filter> filterList = new LinkedList();
 		filterList.add(filter());
 		source.setProxyFilters(filterList);	
+		
 		return source;
 	}
 	

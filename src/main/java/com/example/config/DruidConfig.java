@@ -28,21 +28,20 @@ public class DruidConfig {
 	
 	@Bean
 	public JdbcTemplate jdbcTemplate() {
-		return new JdbcTemplate(druidDataSource());
+		JdbcTemplate jdbc = new JdbcTemplate(druidDataSource());
+		return jdbc;
 	}
 	
 	@Bean
 	public DruidDataSource druidDataSource() {
-		DruidDataSource source = new DruidDataSource();
-		
+		DruidDataSource source = new DruidDataSource();		
 		source.setUrl(env.getProperty("spring.dataSource.url"));
 		source.setUrl(env.getProperty("spring.dataSource.username"));
 		source.setUrl(env.getProperty("spring.dataSource.password"));
 		
 		List<Filter> filterList = new LinkedList();
 		filterList.add(filter());
-		source.setProxyFilters(filterList);
-		
+		source.setProxyFilters(filterList);	
 		return source;
 	}
 	

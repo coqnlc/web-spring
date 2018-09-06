@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,6 +12,7 @@ import com.example.entity.User;
 import com.example.service.UserService;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
@@ -30,16 +34,11 @@ public class UserController {
 		return service.queryOne(id);
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/list")
 	public String queryAll(ModelMap model) {
-		//List<User> users = service.queryAll();
-		//List<User> users = new ArrayList<User>();
-		//users.add(new User("1", "2", 3, "4"));
-		//users.add(new User("11", "22", 33, "44"));
-		
-		model.addAttribute("test", "XXOO");
-		//model.addAttribute("userList", users);
-		return "index";
+		List<User> users = service.queryAll();
+		model.addAttribute("userList", users);
+		return "user/list";
 	}
 	
 }

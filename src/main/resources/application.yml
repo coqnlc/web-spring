@@ -2,7 +2,7 @@ spring:
   freemarker:       
     allow-request-override: false
     allow-session-override: false
-    cache: true
+    cache: false
     check-template-location: true
     content-type: text/html
     enabled: true
@@ -15,10 +15,10 @@ spring:
     settings:
       template_update_delay: 0
       default_encoding: UTF-8
-      classic_compatible: true
+      classic_compatible: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/web_demo?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: root
     password: lc1234

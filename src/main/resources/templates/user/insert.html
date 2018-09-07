@@ -1,0 +1,19 @@
+<!DOCTYPE>
+<head>
+<title>新增页</title>
+</head>
+<body>
+	<#include "/public/header.html" />
+	
+	<form action="/user/insert">
+	
+		<p>账号：<input type="text" name="username" /></p>
+		<p>密码：<input type="text" name="password" /></p>
+		<p>年龄：<input type="text" name="age" />	 </p>
+		<p>描述：<input type="text" name="describe" /></p>
+		
+		<input type="submit" value="新增" />
+		<input type="reset" value="重置" />
+	</form>
+</body>
+</html>

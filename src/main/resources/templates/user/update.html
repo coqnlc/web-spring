@@ -1,0 +1,19 @@
+<!DOCTYPE>
+<head>
+<title>修改页</title>
+</head>
+<body>
+	<#include "/public/header.html" />
+	
+	<form action="/user/update">
+		
+		<p>账号：<input type="text" name="username" value="${user.username}" /></p>
+		<p>密码：<input type="text" name="password" value="${user.password}"/> </p>
+		<p>年龄：<input type="text" name="age" 	   value="${user.age}"/>	  </p>
+		<p>描述：<input type="text" name="describe" value="${user.describe}"/> </p>
+		
+		<input type="hidden" name="id" value="${user.id}" />
+		<input type="submit" value="修改" />
+	</form>
+</body>
+</html>

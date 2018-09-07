@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.example.entity.User;
+import com.example.util.LCUtil;
 
 /**
  * 用户持久层
@@ -23,7 +24,8 @@ public class UserDao {
 	private JdbcTemplate jdbc;
 	
 	public int insert(User user) {
-		String sql = "insert into user set(username, password, age, describe, datetime) values(?, ?, ?, ?, ?)";
+		user.setDatetime(LCUtil.getSqlDateNow());
+		String sql = "insert into user(`username`, `password`, `age`, `describe`, `datetime`) values(?, ?, ?, ?, ?)";
 		int count = jdbc.update(sql, user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime());
 		return count;
 	} 
@@ -33,8 +35,9 @@ public class UserDao {
 	}
 	
 	public int update(User user) {
-		String sql = "update user set username = ?, password = ?, age = ?, describe = ?, datetime = ?";
-		int count = jdbc.update(sql, user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime());
+		user.setDatetime(LCUtil.getSqlDateNow());
+		String sql = "update user set `username` = ?, `password` = ?, `age` = ?, `describe` = ?, `datetime` = ? where id = ?";
+		int count = jdbc.update(sql, user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime(), user.getId());
 		return count;
 	}
 	

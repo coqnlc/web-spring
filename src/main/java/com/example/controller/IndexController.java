@@ -11,4 +11,9 @@ public class IndexController {
 		return "login";
 	}
 	
+	@RequestMapping("/page")
+	public String page(String page) {
+		return page;
+	}
+	
 }

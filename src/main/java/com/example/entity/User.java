@@ -35,7 +35,7 @@ public class User {
 		this.datetime = LCUtil.getSqlDateNow();
 	}
 	
-	public String getDateTimeStr () {
+	public String getDateTimeStr() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = null; 
 		String str = date != null ? format.format(date) : "无";

@@ -22,7 +22,7 @@ public class UserService {
 		return dao.delete(id);
 	}
 	
-	public int udpate(User user) {
+	public int update(User user) {
 		return dao.update(user);
 	}
 	

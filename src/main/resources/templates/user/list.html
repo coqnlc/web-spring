@@ -7,16 +7,24 @@
 	
 	<table border="1">
 		<tr>
-			<td>账户</td>
-			<td>密码</td>
+			<td>编号</td>
+			<td>账号</td>
 			<td>年龄</td>
+			<td>性别</td>
+			<td>城市</td>
+			<td>爱好</td>
+			<td>日期</td>
 			<td>操作</td>
 		</tr>
 		<#list userList as u>
 		<tr>
+			<td>${u.id}</td>
 			<td>${u.username}</td>
-			<td>${u.password}</td>
 			<td>${u.age}</td>
+			<td>${u.getSexStr()}</td>
+			<td>${u.getCityStr()}</td>
+			<td>${u.getHobbyStr()}</td>
+			<td>${u.getDateTimeStr()}</td>
 			<td>
 				<a href="/user/queryOne?id=${u.id}">查看</a>
 				<a href="/user/updatePage?id=${u.id}">修改</a> 

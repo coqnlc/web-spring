@@ -1,8 +1,37 @@
 <!DOCTYPE>
 <head>
 <title>修改页</title>
+
+<script type="text/javascript">
+	function setData(){
+		//设置性别
+		var radio = document.getElementsByName("sex");
+		for (var i = 0; i < radio.length; i++) {
+			var r = radio[i];
+			r.checked = r.value == ${user.sex};
+		}
+		//设置城市
+		var city = document.getElementsByName("city")[0];
+		for (var i = 0; i < city.options.length; i++) {
+			var c = city.options[i];
+			c.selected = c.value == ${user.city};
+		}
+		//设置爱好
+		var hobby = document.getElementsByName("hobby");
+		for (var i = 0; i < hobby.length; i++) {
+			var h = hobby[i];
+			//这里赋值有问题，还有新增日期回退到前一天？？
+			var hs = ${user.getHobbyArr};
+			for (var j = 0; j < hs.length; j++) {
+				if (h.value == hs[j])
+					h.checked = true
+			}
+		}
+	}
+</script>
+
 </head>
-<body>
+<body onLoad="setData()">
 	<#include "/public/header.html" />
 	
 	<form action="/user/update">
@@ -10,7 +39,24 @@
 		<p>账号：<input type="text" name="username" value="${user.username}" /></p>
 		<p>密码：<input type="text" name="password" value="${user.password}"/> </p>
 		<p>年龄：<input type="text" name="age" 	   value="${user.age}"/>	  </p>
+		<p>性别：
+			<input type="radio" name="sex" value="0" />男
+			<input type="radio" name="sex" value="1" />女
+		</p>
+		<p>城市：
+			<select name="city">
+				<option value="0">北京</option>
+				<option value="1">上海</option>
+				<option value="2">广州</option>
+			</select>
+		</p>
+		<p>爱好：
+			<input type="checkbox" name="hobby" value="0" />运动
+			<input type="checkbox" name="hobby" value="1" />音乐
+			<input type="checkbox" name="hobby" value="2" />睡觉
+		</p>
 		<p>描述：<input type="text" name="describe" value="${user.describe}"/> </p>
+		<p>日期：<input type="date" name="datetime" value="${user.getDateTimeStr()}" /></p>
 		
 		<input type="hidden" name="id" value="${user.id}" />
 		<input type="submit" value="修改" />

@@ -24,9 +24,8 @@ public class UserDao {
 	private JdbcTemplate jdbc;
 	
 	public int insert(User user) {
-		user.setDatetime(LCUtil.getSqlDateNow());
-		String sql = "insert into user(`username`, `password`, `age`, `describe`, `datetime`) values(?, ?, ?, ?, ?)";
-		Object[] args = new Object[] { user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime() };
+		String sql = "insert into `user`(`username`, `password`, `age`, `sex`, `city`, `hobby`, `describe`, `datetime`) values(?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] args = new Object[] { user.getUsername(), user.getPassword(), user.getAge(), user.getSex(), user.getCity(), user.getHobby(), user.getDescribe(), user.getDatetime() };
 		return jdbc.update(sql, args);
 	} 
 	
@@ -35,9 +34,8 @@ public class UserDao {
 	}
 	
 	public int update(User user) {
-		user.setDatetime(LCUtil.getSqlDateNow());
-		String sql = "update user set `username` = ?, `password` = ?, `age` = ?, `describe` = ?, `datetime` = ? where id = ?";
-		Object[] args = new Object[] { user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime(), user.getId() };
+		String sql = "update `user` set `username` = ?, `password` = ?, `age` = ?, `sex` = ?, `city` = ?, `hobby` = ? , `describe` = ?, `datetime` = ? where `id` = ?";
+		Object[] args = new Object[] { user.getUsername(), user.getPassword(), user.getAge(), user.getSex(), user.getCity(), user.getHobby(), user.getDescribe(), user.getDatetime(), user.getId() };
 		return jdbc.update(sql, args);
 	}
 	
@@ -57,6 +55,9 @@ public class UserDao {
 			user.setUsername(rs.getString("username"));
 			user.setPassword(rs.getString("password"));
 			user.setAge(rs.getInt("age"));
+			user.setSex(rs.getInt("sex"));
+			user.setCity(rs.getInt("city"));
+			user.setHobby(rs.getString("hobby"));
 			user.setDescribe(rs.getString("describe"));
 			user.setDatetime(rs.getDate("datetime"));
 			return user;

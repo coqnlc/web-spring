@@ -2,7 +2,18 @@
 <head>
 <title>新增页</title>
 </head>
-<body>
+
+<script type="text/javascript">
+	function setDate(){
+		//html.Date格式必须是yyyy-MM-dd（月和日必须得2位）
+		var date = new Date();
+		var dateString = date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
+		var mydateInput = document.getElementById("mydate");
+		mydateInput.value=dateString;
+	}
+</script>
+
+<body onload="setDate()">
 	<#include "/public/header.html" />
 	
 	<form action="/user/insert">
@@ -10,10 +21,29 @@
 		<p>账号：<input type="text" name="username" /></p>
 		<p>密码：<input type="text" name="password" /></p>
 		<p>年龄：<input type="text" name="age" />	 </p>
+		<p>性别：
+			<input type="radio" name="sex" value="0" checked />男
+			<input type="radio" name="sex" value="1" />女
+		</p>
+		<p>城市：
+			<select name="city">
+				<option value="0" selected>北京</option>
+				<option value="1">上海</option>
+				<option value="2">广州</option>
+			</select>
+		</p>
+		<p>爱好：
+			<input type="checkbox" name="hobby" value="0" checked />运动
+			<input type="checkbox" name="hobby" value="1" />音乐
+			<input type="checkbox" name="hobby" value="2" />睡觉
+		</p>
 		<p>描述：<input type="text" name="describe" /></p>
+		<p>日期：<input type="date" name="datetime" id="mydate" /></p>
 		
-		<input type="submit" value="新增" />
-		<input type="reset" value="重置" />
+		<p>
+			<input type="submit" value="新增" />
+			<input type="reset" value="重置" />
+		</p>
 	</form>
 </body>
 </html>

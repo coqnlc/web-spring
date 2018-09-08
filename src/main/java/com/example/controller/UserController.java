@@ -28,6 +28,7 @@ public class UserController {
 	
 	@RequestMapping("/insert")
 	public ModelAndView insert(User user) {
+		String str = user.getDateTimeStr();
 		ModelAndView mv = new ModelAndView();
 		int result = service.insert(user);
 		if (result > 0) {

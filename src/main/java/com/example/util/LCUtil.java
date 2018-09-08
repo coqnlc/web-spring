@@ -23,4 +23,30 @@ public class LCUtil {
 		System.out.println(str);
 	}
 	
+	/**
+	 * 转换数组为字符串
+	 * @param arr
+	 * @return
+	 */
+	public static String Arr2Str(String[] arr) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i< arr.length; i++) {
+			sb.append(arr[i]);
+			if (i < arr.length - 1) {
+				sb.append(",");
+			}
+		}
+		return sb.toString();
+	}
+	
+	/**
+	 * 转化字符串为数组
+	 * @param arr
+	 * @return
+	 */
+	public static String[] Str2Arr(String arr) {
+		String[] strArr = arr.split(",");
+		return strArr;
+	}
+	
 }

@@ -69,7 +69,6 @@ public class UserController {
 	public ModelAndView queryOne(int id) {
 		ModelAndView mv = new ModelAndView("user/query");
 		User user = service.queryOne(id);
-		LCUtil.Log(user.toString());
 		mv.addObject("user", user);
 		return mv;
 	}

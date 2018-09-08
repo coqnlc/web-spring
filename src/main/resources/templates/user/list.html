@@ -10,8 +10,6 @@
 			<td>账户</td>
 			<td>密码</td>
 			<td>年龄</td>
-			<td>描述</td>
-			<td>日期</td>
 			<td>操作</td>
 		</tr>
 		<#list userList as u>
@@ -19,8 +17,6 @@
 			<td>${u.username}</td>
 			<td>${u.password}</td>
 			<td>${u.age}</td>
-			<td>${u.describe}</td>
-			<td>${u.datetime}</td>
 			<td>
 				<a href="/user/queryOne?id=${u.id}">查看</a>
 				<a href="/user/updatePage?id=${u.id}">修改</a> 

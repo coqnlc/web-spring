@@ -26,8 +26,8 @@ public class UserDao {
 	public int insert(User user) {
 		user.setDatetime(LCUtil.getSqlDateNow());
 		String sql = "insert into user(`username`, `password`, `age`, `describe`, `datetime`) values(?, ?, ?, ?, ?)";
-		int count = jdbc.update(sql, user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime());
-		return count;
+		Object[] args = new Object[] { user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime() };
+		return jdbc.update(sql, args);
 	} 
 	
 	public int delete(int id) {
@@ -37,8 +37,8 @@ public class UserDao {
 	public int update(User user) {
 		user.setDatetime(LCUtil.getSqlDateNow());
 		String sql = "update user set `username` = ?, `password` = ?, `age` = ?, `describe` = ?, `datetime` = ? where id = ?";
-		int count = jdbc.update(sql, user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime(), user.getId());
-		return count;
+		Object[] args = new Object[] { user.getUsername(), user.getPassword(), user.getAge(), user.getDescribe(), user.getDatetime(), user.getId() };
+		return jdbc.update(sql, args);
 	}
 	
 	public User queryOne(int id) {

@@ -45,6 +45,9 @@ public class LCUtil {
 	 * @return
 	 */
 	public static String[] Str2Arr(String arr) {
+		if (arr == null || arr.equals(""))
+			return new String[0];
+			
 		String[] strArr = arr.split(",");
 		return strArr;
 	}

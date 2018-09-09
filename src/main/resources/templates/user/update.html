@@ -3,35 +3,40 @@
 <title>修改页</title>
 
 <script type="text/javascript">
-	function setData(){
-		//设置性别
-		var radio = document.getElementsByName("sex");
-		for (var i = 0; i < radio.length; i++) {
-			var r = radio[i];
-			r.checked = r.value == ${user.sex};
-		}
-		//设置城市
-		var city = document.getElementsByName("city")[0];
-		for (var i = 0; i < city.options.length; i++) {
-			var c = city.options[i];
-			c.selected = c.value == ${user.city};
-		}
-		//设置爱好
-		var hobby = document.getElementsByName("hobby");
-		for (var i = 0; i < hobby.length; i++) {
-			var h = hobby[i];
-			//这里赋值有问题，还有新增日期回退到前一天？？
-			var hs = ${user.getHobbyArr};
-			for (var j = 0; j < hs.length; j++) {
-				if (h.value == hs[j])
-					h.checked = true
-			}
-		}
+window.onload=function(){
+	//设置性别
+	var radio = document.getElementsByName("sex");
+	for (var i = 0; i < radio.length; i++) {
+		var r = radio[i];
+		r.checked = r.value == ${user.sex};
 	}
+	//设置城市
+	var city = document.getElementsByName("city")[0];
+	for (var i = 0; i < city.options.length; i++) {
+		var c = city.options[i];
+		c.selected = c.value == ${user.city};
+	}
+	//设置爱好
+	var hobby = document.getElementsByName("hobby");
+	var hobbyStr = document.getElementById("hobby").value;
+	var hobbyArr = hobbyStr.split(",");
+ 	for (var i = 0; i < hobby.length; i++) {
+		var h = hobby[i];
+		//alert("----->" + h.value);
+		for (var j = 0; j < hobbyArr.length; j++) {
+			//alert(hobbyArr[j]);
+			if (h.value == hobbyArr[j]) {
+				//alert("true");
+				h.checked = true;
+				break;
+			}					
+		}
+	} 
+}
 </script>
 
 </head>
-<body onLoad="setData()">
+<body>
 	<#include "/public/header.html" />
 	
 	<form action="/user/update">
@@ -58,6 +63,7 @@
 		<p>描述：<input type="text" name="describe" value="${user.describe}"/> </p>
 		<p>日期：<input type="date" name="datetime" value="${user.getDateTimeStr()}" /></p>
 		
+		<input type="hidden" id="hobby" value="${user.hobby}" />
 		<input type="hidden" name="id" value="${user.id}" />
 		<input type="submit" value="修改" />
 	</form>

@@ -122,4 +122,8 @@ public class User {
 	public String[] getHobbyArr() {
 		return LCUtil.Str2Arr(hobby);
 	}
+	
+	public String getHobby() {
+		return hobby == null ? "" : hobby;
+	}
 }

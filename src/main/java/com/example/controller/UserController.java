@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.entity.User;
 import com.example.service.UserService;
-import com.example.util.LCUtil;
 
 @Controller
 @RequestMapping("/user")
@@ -28,7 +27,6 @@ public class UserController {
 	
 	@RequestMapping("/insert")
 	public ModelAndView insert(User user) {
-		String str = user.getDateTimeStr();
 		ModelAndView mv = new ModelAndView();
 		int result = service.insert(user);
 		if (result > 0) {

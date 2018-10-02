@@ -3,12 +3,9 @@ package com.example.config;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.alibaba.druid.filter.Filter;
 import com.alibaba.druid.filter.stat.StatFilter;
@@ -41,7 +38,7 @@ public class DruidConfig {
 		source.setMinIdle(10);
 		source.setMaxActive(30);
 		//过滤器配置
-		List<Filter> filterList = new LinkedList();
+		List<Filter> filterList = new LinkedList<Filter>();
 		filterList.add(filter());
 		source.setProxyFilters(filterList);	
 		

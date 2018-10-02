@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.example.entity.User;
-import com.example.util.LCUtil;
 
 /**
  * 用户持久层
